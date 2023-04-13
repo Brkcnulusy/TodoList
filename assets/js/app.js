@@ -22,6 +22,8 @@ cardBody.addEventListener("click", btnClick);
 
 clearButton.addEventListener("click", clearİtems);
 
+searchİnput.addEventListener("keyup",filterTodos);
+
 // document.addEventListener("DOMContentLoaded", loadAllTodosToUI);
 
 // Functions
@@ -50,6 +52,7 @@ function createNewTodo() {
         // Add Classes to New Elements
         newText.appendChild(document.createTextNode(addTodo));
         newDate.innerHTML = addDate;
+        newTodos.className = "list-item d-flex";
         newDayCounter.innerHTML = totalDays + " Day";
         newButtons.className = "btn-wrapper";
         cancelButtons.className = "btn btn-danger btn-cancel";
@@ -73,9 +76,6 @@ function createNewTodo() {
             list.innerHTML = "";
         }
         
-            // if(totalDays > 0){
-            //     newDayCounter.innerHTML = totalDays + " Day";
-            // }
             interval = setInterval(timerDay, 1000 * 3600 * 24);
         function timerDay() {
             totalDays--;
@@ -109,6 +109,24 @@ function createNewTodo() {
     else {
         alert("You Cannot Enter The Date of This Day or Previous Days");
     }
+}
+
+function filterTodos(e){
+    const filterValue = e.target.value.toLowerCase();
+    const listItems = document.querySelectorAll(".list-item");
+
+    listItems.forEach(function(listItem){
+        const text = listItem.textContent.toLowerCase();
+        if (text.indexOf(filterValue) === -1){
+            // Bulamadı
+
+            listItem.setAttribute("style","display : none !important");
+
+        }
+        else {
+            listItem.setAttribute("style","display : block");
+        }
+    });
 }
 
 function btnClick(e) {
@@ -151,34 +169,3 @@ function clearİtems() {
     }
     localStorage.clear();
 }
-// function createNewItem() {
-//      // Create New Element
-//      var addTodo = todoİnput.value.trim();
-//      var addDate = dateİnput.value;
-//      var newTodos = document.createElement("li");
-//      var newText = document.createElement("p");
-//      var newDate = document.createElement("p");
-//      var newDayCounter = document.createElement("p");
-//      var newButtons = document.createElement("div");
-//      var cancelButtons = document.createElement("button");
-//      var completedButtons = document.createElement("button");
-//      // Add Classes to New Elements
-//      newText.appendChild(document.createTextNode(addTodo));
-//      newDate.innerHTML = addDate;
-//      newButtons.className = "btn-wrapper";
-//      cancelButtons.className = "btn btn-danger btn-cancel";
-//      cancelButtons.innerHTML = "Cancel";
-//      completedButtons.className = "btn btn-success btn-completed";
-//      completedButtons.innerHTML = "Completed";
-//      // Identifying Their Parents
-//      newButtons.appendChild(completedButtons);
-//      newButtons.appendChild(cancelButtons);
-//      newTodos.appendChild(newText);
-//      newTodos.appendChild(newDate);
-//      newTodos.appendChild(newDayCounter);
-//      newTodos.appendChild(newButtons);
-//      list.appendChild(newTodos);
-//      // Cleaning the Inside of the Inputs
-//      todoİnput.value = "";
-//      dateİnput.value = "";
-// }
