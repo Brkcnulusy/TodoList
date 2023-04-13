@@ -109,29 +109,6 @@ function createNewTodo() {
     else {
         alert("You Cannot Enter The Date of This Day or Previous Days");
     }
-    addTodoToStorage(addTodo);
-}
-
-
-function getTodosFromStorage() {
-
-    let todos;
-    if (localStorage.getItem("todos") === null) {
-        todos = [];
-    }
-    else {
-        todos = JSON.parse(localStorage.getItem("todos"));
-    }
-    return todos;
-}
-
-function addTodoToStorage(addTodo) {
-
-    let todos = getTodosFromStorage();
-
-    todos.push(addTodo);
-
-    localStorage.setItem("todos", JSON.stringify(todos));
 }
 
 function btnClick(e) {
@@ -174,39 +151,34 @@ function clearİtems() {
     }
     localStorage.clear();
 }
-function createNewItem() {
-     // Create New Element
-     var addTodo = todoİnput.value.trim();
-     var addDate = dateİnput.value;
-     var newTodos = document.createElement("li");
-     var newText = document.createElement("p");
-     var newDate = document.createElement("p");
-     var newDayCounter = document.createElement("p");
-     var newButtons = document.createElement("div");
-     var cancelButtons = document.createElement("button");
-     var completedButtons = document.createElement("button");
-     // Add Classes to New Elements
-     newText.appendChild(document.createTextNode(addTodo));
-     newDate.innerHTML = addDate;
-     newButtons.className = "btn-wrapper";
-     cancelButtons.className = "btn btn-danger btn-cancel";
-     cancelButtons.innerHTML = "Cancel";
-     completedButtons.className = "btn btn-success btn-completed";
-     completedButtons.innerHTML = "Completed";
-     // Identifying Their Parents
-     newButtons.appendChild(completedButtons);
-     newButtons.appendChild(cancelButtons);
-     newTodos.appendChild(newText);
-     newTodos.appendChild(newDate);
-     newTodos.appendChild(newDayCounter);
-     newTodos.appendChild(newButtons);
-     list.appendChild(newTodos);
-     // Cleaning the Inside of the Inputs
-     todoİnput.value = "";
-     dateİnput.value = "";
-}
-// function loadAllTodosToUI(){
-//     todos = getTodosFromStorage
-//     createNewTodo(todos);
-    
+// function createNewItem() {
+//      // Create New Element
+//      var addTodo = todoİnput.value.trim();
+//      var addDate = dateİnput.value;
+//      var newTodos = document.createElement("li");
+//      var newText = document.createElement("p");
+//      var newDate = document.createElement("p");
+//      var newDayCounter = document.createElement("p");
+//      var newButtons = document.createElement("div");
+//      var cancelButtons = document.createElement("button");
+//      var completedButtons = document.createElement("button");
+//      // Add Classes to New Elements
+//      newText.appendChild(document.createTextNode(addTodo));
+//      newDate.innerHTML = addDate;
+//      newButtons.className = "btn-wrapper";
+//      cancelButtons.className = "btn btn-danger btn-cancel";
+//      cancelButtons.innerHTML = "Cancel";
+//      completedButtons.className = "btn btn-success btn-completed";
+//      completedButtons.innerHTML = "Completed";
+//      // Identifying Their Parents
+//      newButtons.appendChild(completedButtons);
+//      newButtons.appendChild(cancelButtons);
+//      newTodos.appendChild(newText);
+//      newTodos.appendChild(newDate);
+//      newTodos.appendChild(newDayCounter);
+//      newTodos.appendChild(newButtons);
+//      list.appendChild(newTodos);
+//      // Cleaning the Inside of the Inputs
+//      todoİnput.value = "";
+//      dateİnput.value = "";
 // }
